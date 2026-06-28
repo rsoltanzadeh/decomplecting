@@ -1,0 +1,9 @@
+.nrepl-port
+.cpcache/
+.shadow-cljs/
+public/js/
+
+# emacs files
+*~
+\#*#
+*.#*
