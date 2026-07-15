@@ -1,4 +1,4 @@
-(ns decomplecting.app
+(ns decomplecting.core
   (:require [replicant.dom :as r]))
 
 (defn render [state]

@@ -2,6 +2,8 @@
 .cpcache/
 .shadow-cljs/
 public/js/
+node_modules/
+dev-resources/
 
 # emacs files
 *~
