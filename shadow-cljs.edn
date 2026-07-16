@@ -1,10 +1,12 @@
 {:source-paths ["src" "portfolio"]
  :dependencies [[no.cjohansen/replicant "2026.06.2"]
                 [no.cjohansen/nexus "2026.06.3"]
-                [no.cjohansen/portfolio "2026.03.1"]]
- :dev-http     {8080 ["dev-resources/public" "classpath:public"]}
- :builds       {:app       {:target  :browser
-                            :modules {:main {:init-fn app/init}}}
+                [no.cjohansen/portfolio "2026.03.1"]
+                [datascript "1.7.8"]]
+ :dev-http     {8080 ["public" "dev-resources/public" "classpath:public"]}
+ :builds       {:app       {:target           :browser
+                            :modules          {:main {:init-fn decomplecting.main/init}}
+                            :compiler-options {:externs ["datascript/externs.js"]}}
                 :portfolio {:target    :portfolio
                             :runner-ns decomplecting.portfolio
                             :dev       {:output-dir "dev-resources/public/js"}}}}
