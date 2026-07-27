@@ -2,6 +2,7 @@
  :dependencies [[no.cjohansen/replicant "2026.06.2"]
                 [no.cjohansen/nexus "2026.06.3"]
                 [no.cjohansen/portfolio "2026.03.1"]
+                [no.cjohansen/dataspex "2026.06.3"]
                 [datascript "1.7.8"]]
  :dev-http     {8080 ["public" "dev-resources/public" "classpath:public"]}
  :builds       {:app       {:target           :browser

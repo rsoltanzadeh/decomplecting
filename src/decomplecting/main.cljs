@@ -2,6 +2,7 @@
   (:require [replicant.dom :as r]
             [datascript.core :as ds]
             [nexus.registry :as nxr]
+            [dataspex.core :as dataspex]
             [decomplecting.effects]
             [decomplecting.actions]))
 
@@ -31,6 +32,8 @@
    conn ::render
    (fn [_ _ _ _]
      (r/render el (render (ds/db conn)))))
+
+  (dataspex/inspect "DB" conn)
   
   ;; Trigger the initial render
   (ds/transact! conn [{:db/ident       :system/app
