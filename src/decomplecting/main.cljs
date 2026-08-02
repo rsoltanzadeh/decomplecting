@@ -4,13 +4,22 @@
             [nexus.registry :as nxr]
             [dataspex.core :as dataspex]
             [decomplecting.effects]
-            [decomplecting.actions]))
+            [decomplecting.actions]
+            [decomplecting.router :as router]))
 
-(defn render [db]
+(defn find-target-href [e]
+  (some-> e .-target
+          (.closest "a")
+          (.getAttribute "href")))
+
+(defn render-not-found [_ _]
+  [:h1 "Not found"])
+
+(defn render-frontpage [db location]
   (let [app    (ds/entity db :system/app)
         clicks (:clicks app)]
     [:div
-     [:h1 "Hello world"]
+     [:h1 (str "Hello " (:page-id location))]
      [:p "Started at " (:app/started-at app)]
      [:button
       {:on {:click [[:counter/inc app]]}}
@@ -20,6 +29,16 @@
         "Button was clicked "
         clicks
         (if (= 1 clicks) " time" " times")])]))
+
+(defn render-test [_ _]
+  [:h1 "Test"])
+
+(defn render-page [db location]
+  (let [f (case (:page-id location)
+            :pages/frontpage render-frontpage
+            :pages/test      render-test
+            render-not-found)]
+    (f db location)))
 
 (nxr/register-system->state! ds/db)
 
@@ -31,7 +50,9 @@
   (add-watch
    conn ::render
    (fn [_ _ _ _]
-     (r/render el (render (ds/db conn)))))
+     (r/render el
+               (render-page (ds/db conn)
+                            (router/path->location js/location.pathname)))))
 
   (dataspex/inspect "DB" conn)
   
@@ -49,5 +70,4 @@
 (comment
   (ds/transact! conn [{:db/ident       :system/app
                        :app/started-at (js/Date.)}])
-
   )
