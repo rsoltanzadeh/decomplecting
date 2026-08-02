@@ -1,5 +1,13 @@
 {
+  "scripts": {
+    "css": "tailwindcss -i src/styles.css -o public/css/styles.css --watch"
+  },
   "dependencies": {
     "snabbdom": "3.5.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "daisyui": "^5.7.14",
+    "tailwindcss": "^4.3.3"
   }
 }

@@ -1,13 +1,18 @@
 (ns decomplecting.test-scenes
   (:require [portfolio.replicant :refer-macros [defscene]]
-            [decomplecting.render :refer [test-paragraph]]))
+            [decomplecting.render :as render]))
 
 (defscene test-scene
   "Test docstring for the `test-paragraph` render function."
   :params "Test"
-  test-paragraph)
+  render/test-paragraph)
+
+(defscene test-scene2
+  "Foobar"
+  :params "Lorem ipsum"
+  render/button)
 
 (comment
   (let [store (atom {})]
-    (swap! @store :idx 0))
+    (swap! store assoc :idx 0))
   )
