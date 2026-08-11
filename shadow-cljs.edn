@@ -3,6 +3,7 @@
                 [no.cjohansen/nexus "2026.06.3"]
                 [no.cjohansen/portfolio "2026.03.1"]
                 [no.cjohansen/dataspex "2026.06.3"]
+                [no.cjohansen/phosphor-clj "2025.04.16"]
                 [datascript "1.7.8"]]
  :dev-http     {8080 ["public" "classpath:public"]
                 8090 ["dev-resources/public" "public" "classpath:public"]}

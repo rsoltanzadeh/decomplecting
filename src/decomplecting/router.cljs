@@ -2,6 +2,6 @@
 
 (defn path->location [path]
   (case path
-    "/"     {:page-id :pages/frontpage}
-    "/test" {:page-id :pages/test}
-    nil))
+    "/"      {:page-id :pages/frontpage}
+    "/setup" {:page-id :pages/setup}
+    {:page-id :pages/not-found}))
