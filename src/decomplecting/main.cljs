@@ -5,40 +5,16 @@
             [dataspex.core :as dataspex]
             [decomplecting.effects]
             [decomplecting.actions]
-            [decomplecting.router :as router]))
+            [decomplecting.router :as router]
+            [decomplecting.pages :as pages]))
 
 (defn find-target-href [e]
   (some-> e .-target
           (.closest "a")
           (.getAttribute "href")))
 
-(defn render-not-found [_ _]
-  [:h1 "Not found"])
-
-(defn render-frontpage [db location]
-  (let [app    (ds/entity db :system/app)
-        clicks (:clicks app)]
-    [:div
-     [:h1 (str "Hello " (:page-id location))]
-     [:p "Started at " (:app/started-at app)]
-     [:button
-      {:on {:click [[:counter/inc app]]}}
-      "Click me"]
-     (when (< 0 clicks)
-       [:p
-        "Button was clicked "
-        clicks
-        (if (= 1 clicks) " time" " times")])]))
-
-(defn render-test [_ _]
-  [:h1 "Test"])
-
 (defn render-page [db location]
-  (let [f (case (:page-id location)
-            :pages/frontpage render-frontpage
-            :pages/test      render-test
-            render-not-found)]
-    (f db location)))
+  ((get pages/render-fns (:page-id location)) {:db db}))
 
 (nxr/register-system->state! ds/db)
 

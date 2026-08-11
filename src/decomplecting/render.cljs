@@ -1,15 +1,16 @@
 (ns decomplecting.render)
 
-(defn landing-hero []
+(defn hero [{:keys [title description button-label actions]}]
   [:div {:class ["hero" "bg-base-200" "min-h-screen"]}
    [:div {:class ["hero-content" "text-center"]}
     [:div {:class ["max-w-md"]}
-     [:h1 {:class ["text-5xl" "font-bold"]}
-      "Decomplecting"]
+     [:h1 {:class ["text-4xl" "md:text-5xl" "font-bold"]}
+      title]
      [:p {:class ["py-6"]}
-      "Simplicity is a choice."]
-     [:button {:class ["btn" "btn-primary"]}
-      "->"]]]])
+      description]
+     [:button {:class ["btn" "btn-primary"]
+               :on actions}
+      button-label]]]])
 
 (defn list-row [{:keys [title description actions]}]
   [:li {:class ["list-row"]
@@ -28,3 +29,4 @@
   [:div {:class ["flex" "flex-col"]}
    header
    body])
+
