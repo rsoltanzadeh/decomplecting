@@ -24,4 +24,4 @@ Chosen option: "Use MADR 4.0.0", because
 
 * The cost of not documenting ADs is too high.
 * ADs are important enough to be documented separately and rigorously.
-* MADR is developed carefully, renders beautifully due to frontmatter, is comprehensive without being overly verbose.
+* MADR is developed carefully, renders beautifully due to frontmatter, and is comprehensive without being overly verbose.
