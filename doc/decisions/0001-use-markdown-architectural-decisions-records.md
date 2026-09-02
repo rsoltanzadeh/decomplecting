@@ -1,5 +1,3 @@
-# Use Markdown Architectural Decision Records.
-
 ---
 status: accepted
 date: 2026-09-02
