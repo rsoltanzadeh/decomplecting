@@ -9,15 +9,5 @@
            :button-label "Learn more."}
   render/hero)
 
-(defscene list-view
-  :params {:items [{:title "My First List"
-                    :description "145 items"
-                    :selectable? true
-                    :actions {}}
-                   {:title "My very long and cumbersome list"
-                    :description "23333333333333333333333 items"
-                    :actions {}}]}
-  render/list-view)
-
 
 

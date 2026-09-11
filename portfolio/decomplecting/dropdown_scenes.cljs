@@ -11,6 +11,16 @@
   [params & _]
   [:div.h-36 (render/dropdown params)])
 
+(defscene dropdown-icons
+  :params {:id "dropdown-1"
+           :items [{:label "First option"
+                    :icon (icons/icon :phosphor.regular/pencil)}
+                   {:label "Second long-winded option"
+                    :icon (icons/icon :phosphor.regular/trash)}]
+           :trigger {:leading-icon (icons/icon :phosphor.fill/dots-three-outline-vertical)}}
+  [params & _]
+  [:div.h-36 (render/dropdown params)])
+
 (defscene dropdown-bottom
   :params {:id "dropdown-1"
            :items [{:label "Option 1"}
